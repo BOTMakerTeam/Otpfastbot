@@ -1,0 +1,10 @@
+[
+  {
+    "name": "PHPSESSID",
+    "value": "shvi6hbaespuvg9gv1gt8gjif8",
+    "domain": "94.23.120.156",
+    "path": "/",
+    "httpOnly": true,
+    "secure": false
+  }
+]

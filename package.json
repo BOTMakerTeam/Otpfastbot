@@ -1,0 +1,12 @@
+{
+  "name": "otp-bot-fast",
+  "version": "1.0.0",
+  "description": "Fast OTP bot using puppeteer-core and system chromium",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "puppeteer-core": "^21.3.8"
+  }
+}
