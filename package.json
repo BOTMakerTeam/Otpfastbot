@@ -1,13 +1,11 @@
 {
-  "name": "otp-bot-lambda",
+  "name": "otp-bot-render",
   "version": "1.0.0",
-  "description": "Render-compatible OTP bot",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
   },
   "dependencies": {
-    "puppeteer-core": "^10.4.0",
-    "chrome-aws-lambda": "^10.1.0"
+    "puppeteer": "^21.3.8"
   }
 }
