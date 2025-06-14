@@ -1,12 +1,13 @@
 {
-  "name": "otp-bot-fast",
+  "name": "otp-bot-lambda",
   "version": "1.0.0",
-  "description": "Fast OTP bot using puppeteer-core and system chromium",
+  "description": "Render-compatible OTP bot using puppeteer-core + chrome-aws-lambda",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
   },
   "dependencies": {
-    "puppeteer-core": "^21.3.8"
+    "puppeteer-core": "^21.3.8",
+    "chrome-aws-lambda": "^10.1.0"
   }
 }
