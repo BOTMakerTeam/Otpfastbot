@@ -1,14 +1,17 @@
+const chromium = require('chrome-aws-lambda');
 const puppeteer = require('puppeteer-core');
 const fs = require('fs');
 const { extractSMS } = require('./forwarder');
 const config = require('./config');
 
 (async () => {
-    console.log("[*] Launching Chromium from system path...");
+    console.log("[*] Launching AWS-compatible Chromium...");
     const browser = await puppeteer.launch({
-        headless: true,
-        executablePath: '/usr/bin/google-chrome', // If fails, try '/usr/bin/google-chrome'
-        args: ['--no-sandbox', '--disable-setuid-sandbox']
+        args: chromium.args,
+        defaultViewport: chromium.defaultViewport,
+        executablePath: await chromium.executablePath,
+        headless: chromium.headless,
+        ignoreHTTPSErrors: true
     });
 
     const page = await browser.newPage();
