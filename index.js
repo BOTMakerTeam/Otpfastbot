@@ -7,7 +7,7 @@ const config = require('./config');
     console.log("[*] Launching Chromium from system path...");
     const browser = await puppeteer.launch({
         headless: true,
-        executablePath: '/usr/bin/chromium-browser', // If fails, try '/usr/bin/google-chrome'
+        executablePath: '/usr/bin/google-chrome', // If fails, try '/usr/bin/google-chrome'
         args: ['--no-sandbox', '--disable-setuid-sandbox']
     });
 
