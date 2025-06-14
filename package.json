@@ -1,7 +1,7 @@
 {
   "name": "otp-bot-lambda",
   "version": "1.0.0",
-  "description": "Render-compatible OTP bot using puppeteer-core + chrome-aws-lambda",
+  "description": "Render-compatible OTP bot",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
