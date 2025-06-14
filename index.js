@@ -1,24 +1,14 @@
-const chromium = require('chrome-aws-lambda');
-const puppeteer = require('puppeteer-core');
+const puppeteer = require('puppeteer');
 const fs = require('fs');
 const { extractSMS } = require('./forwarder');
 const config = require('./config');
 
 (async () => {
-    console.log("[*] Launching AWS-compatible Chromium...");
-
-    const executablePath = await chromium.executablePath;
-
-    if (!executablePath) {
-        throw new Error("❌ Could not resolve Chromium path from chrome-aws-lambda!");
-    }
+    console.log("[*] Launching system Chromium...");
 
     const browser = await puppeteer.launch({
-        args: chromium.args,
-        defaultViewport: chromium.defaultViewport,
-        executablePath: executablePath,
-        headless: chromium.headless,
-        ignoreHTTPSErrors: true
+        headless: true,
+        args: ['--no-sandbox', '--disable-setuid-sandbox']
     });
 
     const page = await browser.newPage();
@@ -28,7 +18,6 @@ const config = require('./config');
     await page.goto(config.OTP_URL, { waitUntil: 'networkidle2' });
     console.log("[✅] Logged in using cookies!");
 
-    console.log("[*] Starting OTP Monitoring...");
     while (true) {
         try {
             await extractSMS(page);
