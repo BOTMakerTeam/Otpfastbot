@@ -1,5 +1,8 @@
 const chromium = require('chrome-aws-lambda');
 const puppeteer = require('puppeteer-core');
+const fs = require('fs');
+const { extractSMS } = require('./forwarder');
+const config = require('./config');
 
 (async () => {
     console.log("[*] Launching AWS-compatible Chromium...");
@@ -17,9 +20,6 @@ const puppeteer = require('puppeteer-core');
         headless: chromium.headless,
         ignoreHTTPSErrors: true
     });
-
-    // बाकी कोड...
-})();
 
     const page = await browser.newPage();
     const cookies = JSON.parse(fs.readFileSync('./cookies.json', 'utf8'));
