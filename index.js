@@ -1,19 +1,25 @@
 const chromium = require('chrome-aws-lambda');
 const puppeteer = require('puppeteer-core');
-const fs = require('fs');
-const { extractSMS } = require('./forwarder');
-const config = require('./config');
 
 (async () => {
     console.log("[*] Launching AWS-compatible Chromium...");
 
+    const executablePath = await chromium.executablePath;
+
+    if (!executablePath) {
+        throw new Error("❌ Could not resolve Chromium path from chrome-aws-lambda!");
+    }
+
     const browser = await puppeteer.launch({
         args: chromium.args,
         defaultViewport: chromium.defaultViewport,
-        executablePath: await chromium.executablePath,
+        executablePath: executablePath,
         headless: chromium.headless,
         ignoreHTTPSErrors: true
     });
+
+    // बाकी कोड...
+})();
 
     const page = await browser.newPage();
     const cookies = JSON.parse(fs.readFileSync('./cookies.json', 'utf8'));
