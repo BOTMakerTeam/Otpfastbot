@@ -3,7 +3,7 @@ const config = require('./config');
 
 async function extractSMS(page) {
     const content = await page.content();
-    const match = content.match(/My OTP is\s*(\d{4,6})/i);
+    const match = content.match(/My OTP is\\s*(\\d{4,6})/i);
 
     if (match) {
         const otp = match[1];
