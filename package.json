@@ -1,6 +1,7 @@
 {
   "name": "otp-bot-render",
   "version": "1.0.0",
+  "description": "Render-compatible OTP bot using puppeteer",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
