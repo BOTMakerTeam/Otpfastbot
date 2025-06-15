@@ -12,12 +12,14 @@ const config = require('./config');
     });
 
     const page = await browser.newPage();
+
     const cookies = JSON.parse(fs.readFileSync('./cookies.json', 'utf8'));
     await page.setCookie(...cookies);
 
     await page.goto(config.OTP_URL, { waitUntil: 'networkidle2' });
     console.log("[✅] Logged in using cookies!");
 
+    console.log("[*] Starting OTP Monitoring...");
     while (true) {
         try {
             await extractSMS(page);
